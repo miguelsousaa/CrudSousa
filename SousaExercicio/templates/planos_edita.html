@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            {{ msg }}
+        {% endfor %}
+    {% endif %}
+
+    <form action="/planos/editasave" method="post">
+
+        <input type="hidden" name="id" value="{{dados.id_plano}}">
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" value="{{dados.nome_plano}}">
+
+        <label for="cobertura">Cobertura:</label>
+        <input type="text" name="cobertura" id="cobertura" value="{{dados.cobertura}}">
+
+        <label for="valor">Valor:</label>
+        <input type="number" name="valor" id="valor" value="{{dados.valor_mensal}}">
+
+        <button type="submit">Salvar</button>
+
+    </form>
+    
+{% endblock %}

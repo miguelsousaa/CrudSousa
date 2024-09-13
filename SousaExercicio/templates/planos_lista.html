@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    <a href="/planos/add">Adicionar</a>
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            {{ msg }}
+        {% endfor %}
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cobertura</th>
+            <th>Valor</th>
+            <th>Editar</th>
+            <th>Remover</th>
+        </tr>
+
+        {% for planos in dados %}
+
+        <tr>
+            <td>{{planos.nome_plano}}</td>
+            <td>{{planos.cobertura}}</td>
+            <td>{{planos.valor_mensal}}</td>
+            <td>
+                <a href="/planos/edit/{{planos.id_plano}}">Editar</a>
+            </td>
+            <td>
+                <a href="/planos/remove/{{planos.id_plano}}">Remover</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

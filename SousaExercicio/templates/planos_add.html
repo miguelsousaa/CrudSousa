@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            {{ msg }}
+        {% endfor %}
+
+    {% endif %}
+
+
+    <form action="/planos/save" method="post">
+        <label class="name" for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome">
+
+        <label class="name" for="cobertura">Cobertura:</label>
+        <input type="text" name="cobertura" id="cobertura">
+
+        <label class="name" for="valor">Valor:</label>
+        <input type="number" name="valor" id="valor">
+
+        <button class="name" type="submit">Salvar</button>
+    </form>
+{% endblock %}
